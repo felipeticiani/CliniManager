@@ -61,7 +61,7 @@ public class Medico {
 		String medico[] = new String[6];
 		
 		try {
-			sql = "SELECT * FROM medico WHERE crm = '" + busca + "' OR nome LIKE '%" + busca + "%'";
+			sql = "SELECT * FROM medico WHERE crm = '" + busca + "' OR nome LIKE '%" + busca + "%' OR especialidade LIKE '%" + busca + "%'";
 			ps = banco.prepareStatement(sql);
 			rs = ps.executeQuery();
 			

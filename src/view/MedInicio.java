@@ -16,8 +16,7 @@ import controller.MedicoController;
 public class MedInicio extends JFrame {
 
 	private JFrame frame;
-	private JTextField textNomeBuscar;
-	private JTextField textCrmBuscar;
+	private JTextField textBuscar;
 
 	/**
 	 * Launch the application.
@@ -56,11 +55,6 @@ public class MedInicio extends JFrame {
 		lblBuscarMedico.setBounds(25, 24, 137, 14);
 		frame.getContentPane().add(lblBuscarMedico);
 		
-		JLabel lblNomeBuscar = new JLabel("Nome");
-		lblNomeBuscar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		lblNomeBuscar.setBounds(25, 66, 46, 14);
-		frame.getContentPane().add(lblNomeBuscar);
-		
 		JButton btnNewButton = new JButton("Novo Médico");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -68,41 +62,31 @@ public class MedInicio extends JFrame {
 				MedCadastrar.main(null);
 			}
 		});
-		btnNewButton.setBounds(451, 111, 121, 23);
+		btnNewButton.setBounds(451, 132, 121, 23);
 		frame.getContentPane().add(btnNewButton);
 		
-		textNomeBuscar = new JTextField();
-		textNomeBuscar.setToolTipText("");
-		textNomeBuscar.setBounds(78, 64, 342, 20);
-		frame.getContentPane().add(textNomeBuscar);
-		textNomeBuscar.setColumns(10);
+		textBuscar = new JTextField();
+		textBuscar.setToolTipText("");
+		textBuscar.setBounds(25, 85, 395, 20);
+		frame.getContentPane().add(textBuscar);
+		textBuscar.setColumns(10);
 		
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!textCrmBuscar.getText().isBlank()) {
+				if (!textBuscar.getText().isBlank()) {
 					frame.dispose();
-					MedVisualizar.main(textCrmBuscar.getText());
-				} else if (!textNomeBuscar.getText().isBlank()) {
-					frame.dispose();
-					MedVisualizar.main(textNomeBuscar.getText());
+					MedVisualizar.main(textBuscar.getText());
 				} else {
 					JOptionPane.showMessageDialog(frame, "Informe um dado para buscar!");
 				}
 			}
 		});
-		btnBuscar.setBounds(451, 63, 121, 23);
+		btnBuscar.setBounds(451, 84, 121, 23);
 		frame.getContentPane().add(btnBuscar);
 		
-		JLabel lblCrmBuscar = new JLabel("CRM");
-		lblCrmBuscar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		lblCrmBuscar.setBounds(25, 114, 46, 14);
-		frame.getContentPane().add(lblCrmBuscar);
-		
-		textCrmBuscar = new JTextField();
-		textCrmBuscar.setToolTipText("");
-		textCrmBuscar.setColumns(10);
-		textCrmBuscar.setBounds(78, 112, 342, 20);
-		frame.getContentPane().add(textCrmBuscar);
+		JLabel lblBuscar = new JLabel("Pesquise por nome, CRM ou especialidade.");
+		lblBuscar.setBounds(25, 65, 251, 14);
+		frame.getContentPane().add(lblBuscar);
 	}
 }
