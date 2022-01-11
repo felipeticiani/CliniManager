@@ -182,7 +182,7 @@ public class MedVisualizar {
 		btnExcluir.setBounds(288, 335, 89, 23);
 		frame.getContentPane().add(btnExcluir);
 		
-		// Bot�o Salvar
+		// Botão Salvar
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String medico[] = new String[6];
@@ -213,7 +213,7 @@ public class MedVisualizar {
 		frame.getContentPane().add(btnSalvar);
 		btnSalvar.setVisible(false);
 		
-		// Bot�o Editar
+		// Botão Editar
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnEditar.setVisible(false);
@@ -226,7 +226,7 @@ public class MedVisualizar {
 		btnEditar.setBounds(388, 335, 89, 23);
 		frame.getContentPane().add(btnEditar);
 		
-		// Bot�o Voltar
+		// Botão Voltar
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (editando) {

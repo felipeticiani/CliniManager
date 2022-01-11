@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Medico {
-	// Vari�veis
+	// Variáveis
 	private String nome, telefone, especialidade, email, senha, crm;
 	
 	// Construtores
@@ -23,7 +23,7 @@ public class Medico {
 		this.crm = crm;
 	}
 	
-	// M�todos
+	// Métodos
 	public boolean incluir() {
 		System.out.println("Entrou no método Incluir");
 		Connection banco = abreBanco();
