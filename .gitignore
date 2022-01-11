@@ -1,6 +1,6 @@
 .project
 .settings/
-.classname
+.classpath
 
 # Compiled class file
 *.class
