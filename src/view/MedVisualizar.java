@@ -200,6 +200,8 @@ public class MedVisualizar {
 					alteraEdicao(false);
 					btnSalvar.setVisible(false);
 					btnEditar.setVisible(true);
+					editando = false;
+					btnVoltar.setText("Voltar");
 					
 				} else {
 					System.out.println("Erro na inclusão!");

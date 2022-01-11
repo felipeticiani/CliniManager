@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Medico {
-	// Variáveis
+	// Variï¿½veis
 	private String nome, telefone, especialidade, email, senha, crm;
 	
 	// Construtores
@@ -23,9 +23,9 @@ public class Medico {
 		this.crm = crm;
 	}
 	
-	// Métodos
+	// Mï¿½todos
 	public boolean incluir() {
-		System.out.println("Entrou no método Incluir");
+		System.out.println("Entrou no mÃ©todo Incluir");
 		Connection banco = abreBanco();
 		PreparedStatement ps;
 		String sql;
@@ -52,7 +52,7 @@ public class Medico {
 	}
 	
 	public static String[] consultar(String busca) {
-		System.out.println("Entrou no método Consultar");
+		System.out.println("Entrou no mÃ©todo Consultar");
 		Connection banco = abreBanco();
 		PreparedStatement ps;
 		ResultSet rs = null;
@@ -82,7 +82,7 @@ public class Medico {
 	}
 	
 	public static boolean editar(String[] medico) {
-		System.out.println("Entrou no método Editar");
+		System.out.println("Entrou no mÃ©todo Editar");
 		Connection banco = abreBanco();
 		PreparedStatement ps;
 		String sql;
@@ -108,7 +108,7 @@ public class Medico {
 	}
 	
 	public static boolean excluir(String crm) {
-		System.out.println("Entrou no método Excluir");
+		System.out.println("Entrou no mÃ©todo Excluir");
 		Connection banco = abreBanco();
 		PreparedStatement ps;
 		String sql;
