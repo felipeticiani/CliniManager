@@ -14,6 +14,7 @@ import controller.MedicoController;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class MedVisualizar {
@@ -55,9 +56,10 @@ public class MedVisualizar {
 					MedVisualizar window = new MedVisualizar();
 					try {
 						window.frame.setVisible(true);
-						String[] medico = MedicoController.consultar(med);
+						ArrayList<String[]> busca = MedicoController.consultar(med);
+						String[] medico = busca.get(0);
 						if (medico[1] == null) {
-							JOptionPane.showMessageDialog(window.frame, "Nenhum m�dico encontrado!");
+							JOptionPane.showMessageDialog(window.frame, "Nenhum médico encontrado!");
 							window.frame.dispose();
 							MedInicio.main(null);
 						} else {
@@ -65,7 +67,7 @@ public class MedVisualizar {
 							window.alteraEdicao(false);
 						}
 					} catch (ArrayIndexOutOfBoundsException e) {
-						JOptionPane.showMessageDialog(window.frame, "Dados inv�lidos!");
+						JOptionPane.showMessageDialog(window.frame, "Dados invlidos!");
 						window.frame.dispose();
 						MedInicio.main(null);
 					}	

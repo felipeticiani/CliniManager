@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Medico {
 	// Variáveis
@@ -25,7 +26,6 @@ public class Medico {
 	
 	// Métodos
 	public boolean incluir() {
-		System.out.println("Entrou no método Incluir");
 		Connection banco = abreBanco();
 		PreparedStatement ps;
 		String sql;
@@ -51,38 +51,38 @@ public class Medico {
 		return conexao;
 	}
 	
-	public static String[] consultar(String busca) {
-		System.out.println("Entrou no método Consultar");
+	public static ArrayList<String[]> consultar(String busca) {
 		Connection banco = abreBanco();
 		PreparedStatement ps;
 		ResultSet rs = null;
 		String sql;
 		
-		String medico[] = new String[6];
+		ArrayList<String[]> medicos = new ArrayList<String[]>();
 		
 		try {
-			sql = "SELECT * FROM medico WHERE crm = '" + busca + "' OR nome LIKE '%" + busca + "%' OR especialidade LIKE '%" + busca + "%'";
+			sql = "SELECT * FROM medico WHERE crm = '" + busca + "' OR nome LIKE '%" + busca + "%' OR especialidade LIKE '%" + busca + "%' LIMIT 20";
 			ps = banco.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
+				String medico[] = new String[6];
 				medico[0] = rs.getString("crm");
 				medico[1] = rs.getString("nome");
 				medico[2] = rs.getString("telefone");
 				medico[3] = rs.getString("email");
 				medico[4] = rs.getString("senha");
 				medico[5] = rs.getString("especialidade");
+				medicos.add(medico);
 			}
 			ps.close();
 			banco.close();
 		} catch(SQLException e) {
 			throw new RuntimeException(e);
 		}
-		return medico;
+		return medicos;
 	}
 	
 	public static boolean editar(String[] medico) {
-		System.out.println("Entrou no método Editar");
 		Connection banco = abreBanco();
 		PreparedStatement ps;
 		String sql;
@@ -108,7 +108,6 @@ public class Medico {
 	}
 	
 	public static boolean excluir(String crm) {
-		System.out.println("Entrou no método Excluir");
 		Connection banco = abreBanco();
 		PreparedStatement ps;
 		String sql;

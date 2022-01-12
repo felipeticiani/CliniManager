@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import model.Medico;
 
 public class MedicoController {
@@ -14,10 +16,10 @@ public class MedicoController {
 		}
 	}
 	
-	public static String[] consultar(String busca) {
-		String medico[] = new String[6]; 
-		medico = Medico.consultar(busca);
-		return medico;
+	public static ArrayList<String[]> consultar(String busca) {
+		ArrayList<String[]> medicos = new ArrayList<String[]>();
+		medicos = Medico.consultar(busca);
+		return medicos;
 	}
 	
 	public static boolean editar(String[] medico) {
