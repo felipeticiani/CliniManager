@@ -20,30 +20,31 @@ import java.awt.event.ActionEvent;
 public class MedVisualizar {
 
 	private JFrame frame;
-	private JTextField textMedNome;
-	private JTextField textMedTelefone;
-	private JTextField textMedCrm;
-	private JTextField textMedEspecialidade;
-	private JTextField textMedEmail;
-	private JPasswordField textMedSenha;
+	private JTextField textNome;
+	private JTextField textTelefone;
+	private JTextField textCrm;
+	private JTextField textEspecialidade;
+	private JTextField textEmail;
+	private JPasswordField textSenha;
 	private boolean editando;
+	private String crmAtual;
 	
 	public void preencheDados(String[] medico) {
-		textMedCrm.setText(medico[0]);
-		textMedNome.setText(medico[1]);
-		textMedTelefone.setText(medico[2]);
-		textMedEmail.setText(medico[3]);
-		textMedSenha.setText(medico[4]);
-		textMedEspecialidade.setText(medico[5]);
+		textCrm.setText(medico[0]);
+		textNome.setText(medico[1]);
+		textTelefone.setText(medico[2]);
+		textEmail.setText(medico[3]);
+		textSenha.setText(medico[4]);
+		textEspecialidade.setText(medico[5]);
 	}
 	
 	public void alteraEdicao(boolean edicao) {
-		textMedCrm.setEditable(edicao);
-		textMedNome.setEditable(edicao);
-		textMedTelefone.setEditable(edicao);
-		textMedEmail.setEditable(edicao);
-		textMedSenha.setEditable(edicao);
-		textMedEspecialidade.setEditable(edicao);
+		textCrm.setEditable(edicao);
+		textNome.setEditable(edicao);
+		textTelefone.setEditable(edicao);
+		textEmail.setEditable(edicao);
+		textSenha.setEditable(edicao);
+		textEspecialidade.setEditable(edicao);
 	}
 
 	/**
@@ -99,20 +100,20 @@ public class MedVisualizar {
 		lblMedico.setBounds(25, 24, 105, 14);
 		frame.getContentPane().add(lblMedico);
 		
-		JLabel lblMedNome = new JLabel("Nome");
-		lblMedNome.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		lblMedNome.setBounds(25, 60, 46, 14);
-		frame.getContentPane().add(lblMedNome);
+		JLabel lblNome = new JLabel("Nome");
+		lblNome.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		lblNome.setBounds(25, 60, 46, 14);
+		frame.getContentPane().add(lblNome);
 		
-		JLabel lblMedCrm = new JLabel("CRM");
-		lblMedCrm.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		lblMedCrm.setBounds(25, 138, 46, 14);
-		frame.getContentPane().add(lblMedCrm);
+		JLabel lblCrm = new JLabel("CRM");
+		lblCrm.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		lblCrm.setBounds(25, 138, 46, 14);
+		frame.getContentPane().add(lblCrm);
 		
-		JLabel lblMedSenha = new JLabel("Senha");
-		lblMedSenha.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		lblMedSenha.setBounds(25, 213, 46, 14);
-		frame.getContentPane().add(lblMedSenha);
+		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		lblSenha.setBounds(25, 213, 46, 14);
+		frame.getContentPane().add(lblSenha);
 		
 		JLabel lblTelefone = new JLabel("Telefone");
 		lblTelefone.setFont(new Font("Segoe UI", Font.PLAIN, 12));
@@ -129,34 +130,34 @@ public class MedVisualizar {
 		lblEmail.setBounds(378, 138, 85, 14);
 		frame.getContentPane().add(lblEmail);
 		
-		textMedNome = new JTextField();
-		textMedNome.setBounds(25, 84, 315, 20);
-		frame.getContentPane().add(textMedNome);
-		textMedNome.setColumns(10);
+		textNome = new JTextField();
+		textNome.setBounds(25, 84, 315, 20);
+		frame.getContentPane().add(textNome);
+		textNome.setColumns(10);
 		
-		textMedTelefone = new JTextField();
-		textMedTelefone.setColumns(10);
-		textMedTelefone.setBounds(378, 84, 199, 20);
-		frame.getContentPane().add(textMedTelefone);
+		textTelefone = new JTextField();
+		textTelefone.setColumns(10);
+		textTelefone.setBounds(378, 84, 199, 20);
+		frame.getContentPane().add(textTelefone);
 		
-		textMedCrm = new JTextField();
-		textMedCrm.setColumns(10);
-		textMedCrm.setBounds(25, 163, 125, 20);
-		frame.getContentPane().add(textMedCrm);
+		textCrm = new JTextField();
+		textCrm.setColumns(10);
+		textCrm.setBounds(25, 163, 125, 20);
+		frame.getContentPane().add(textCrm);
 		
-		textMedEspecialidade = new JTextField();
-		textMedEspecialidade.setColumns(10);
-		textMedEspecialidade.setBounds(188, 163, 152, 20);
-		frame.getContentPane().add(textMedEspecialidade);
+		textEspecialidade = new JTextField();
+		textEspecialidade.setColumns(10);
+		textEspecialidade.setBounds(188, 163, 152, 20);
+		frame.getContentPane().add(textEspecialidade);
 		
-		textMedEmail = new JTextField();
-		textMedEmail.setColumns(10);
-		textMedEmail.setBounds(378, 163, 199, 20);
-		frame.getContentPane().add(textMedEmail);
+		textEmail = new JTextField();
+		textEmail.setColumns(10);
+		textEmail.setBounds(378, 163, 199, 20);
+		frame.getContentPane().add(textEmail);
 		
-		textMedSenha = new JPasswordField();
-		textMedSenha.setBounds(25, 238, 125, 20);
-		frame.getContentPane().add(textMedSenha);
+		textSenha = new JPasswordField();
+		textSenha.setBounds(25, 238, 125, 20);
+		frame.getContentPane().add(textSenha);
 		
 		// Variáveis para os botões
 		JButton btnExcluir = new JButton("Excluir");
@@ -170,7 +171,7 @@ public class MedVisualizar {
 				String[] opcoes = {"Cancelar", "Excluir"};
 				int opcao = JOptionPane.showOptionDialog(btnExcluir, "Tem certeza que deseja excluir?", "Atenção!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, opcoes, opcoes[0]);
 				if (opcao == 1) {
-					if (MedicoController.excluir(textMedCrm.getText())) {
+					if (MedicoController.excluir(textCrm.getText())) {
 						JOptionPane.showMessageDialog(frame, "Médico excluído com sucesso!");
 						frame.dispose();
 						MedInicio.main(null);
@@ -186,15 +187,16 @@ public class MedVisualizar {
 		// Botão Salvar
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String medico[] = new String[6];
-				medico[0] = textMedNome.getText();
-				medico[1] = textMedCrm.getText();
-				medico[2] = textMedEspecialidade.getText();
-				if (!textMedEmail.getText().isBlank())
-					medico[3] = textMedEmail.getText();
-				if (!textMedTelefone.getText().isBlank())
-					medico[4] = textMedTelefone.getText();
-				medico[5] = textMedSenha.getText();
+				String medico[] = new String[7];
+				medico[0] = textNome.getText();
+				medico[1] = textCrm.getText();
+				medico[2] = textEspecialidade.getText();
+				if (!textEmail.getText().isBlank())
+					medico[3] = textEmail.getText();
+				if (!textTelefone.getText().isBlank())
+					medico[4] = textTelefone.getText();
+				medico[5] = textSenha.getText();
+				medico[6] = crmAtual;
 				
 				if (MedicoController.editar(medico)) {
 					JOptionPane.showMessageDialog(frame, "Médico alterado com sucesso!");
@@ -222,6 +224,7 @@ public class MedVisualizar {
 				btnVoltar.setText("Cancelar");
 				alteraEdicao(true);
 				editando = true;
+				crmAtual = textCrm.getText();
 			}
 		});
 		btnEditar.setBounds(388, 335, 89, 23);

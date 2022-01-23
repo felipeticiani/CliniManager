@@ -11,7 +11,6 @@ import javax.swing.JTextField;
 
 import controller.PacienteController;
 
-import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -27,6 +26,7 @@ public class PacVisualizar {
 	private JTextField textEndereco;
 	private JTextField textTelefone;
 	private boolean editando;
+	private String cpfAtual;
 	
 	public void preencheDados(String[] paciente) {
 		textCpf.setText(paciente[0]);
@@ -187,7 +187,7 @@ public class PacVisualizar {
 		// Botão Salvar
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String paciente[] = new String[6];
+				String paciente[] = new String[7];
 				paciente[0] = textNome.getText();
 				paciente[1] = textCpf.getText();
 				paciente[2] = textNascimento.getText();
@@ -197,6 +197,7 @@ public class PacVisualizar {
 					paciente[4] = textEndereco.getText();
 				if (!textTelefone.getText().isBlank())
 					paciente[5] = textTelefone.getText();
+				paciente[6] = cpfAtual;
 				
 				if (PacienteController.editar(paciente)) {
 					JOptionPane.showMessageDialog(frame, "Paciente alterado com sucesso!");
@@ -224,6 +225,7 @@ public class PacVisualizar {
 				btnVoltar.setText("Cancelar");
 				alteraEdicao(true);
 				editando = true;
+				cpfAtual = textCpf.getText();
 			}
 		});
 		btnEditar.setBounds(388, 335, 89, 23);

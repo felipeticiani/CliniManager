@@ -89,7 +89,7 @@ public class Medico {
 		boolean conexao = false;
 		
 		try {
-			sql = "UPDATE medico SET nome = ?, crm = ?, especialidade = ?, email = ?, telefone = ?, senha = ? WHERE crm = " + medico[1];
+			sql = "UPDATE medico SET nome = ?, crm = ?, especialidade = ?, email = ?, telefone = ?, senha = ? WHERE crm = " + medico[6];
 			ps = banco.prepareStatement(sql);
 			ps.setString(1, medico[0]);
 			ps.setString(2, medico[1]);
