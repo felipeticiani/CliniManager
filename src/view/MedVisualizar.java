@@ -158,13 +158,13 @@ public class MedVisualizar {
 		textMedSenha.setBounds(25, 238, 125, 20);
 		frame.getContentPane().add(textMedSenha);
 		
-		// Vari�veis para os bot�es
+		// Variáveis para os botões
 		JButton btnExcluir = new JButton("Excluir");
 		JButton btnSalvar = new JButton("Salvar");
 		JButton btnEditar = new JButton("Editar");
 		JButton btnVoltar = new JButton("Voltar");
 		
-		// Bot�o Excluir
+		// Botão Excluir
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String[] opcoes = {"Cancelar", "Excluir"};
@@ -173,8 +173,7 @@ public class MedVisualizar {
 					if (MedicoController.excluir(textMedCrm.getText())) {
 						JOptionPane.showMessageDialog(frame, "Médico excluído com sucesso!");
 						frame.dispose();
-						MedInicio medInicio = new MedInicio();
-						medInicio.main(null);
+						MedInicio.main(null);
 					} else {
 						JOptionPane.showMessageDialog(frame, "Erro na exclusão!");
 					}
