@@ -145,7 +145,7 @@ public class MedCadastrar {
 					JOptionPane.showMessageDialog(frame, "Médico incluído com sucesso!");
 					
 				} else {
-					System.out.println("Erro na inclus�o!");
+					System.out.println("Erro na inclusão!");
 					JOptionPane.showMessageDialog(frame, "Erro na inclusão!");
 				}
 			}
