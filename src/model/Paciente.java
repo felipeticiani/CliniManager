@@ -60,7 +60,7 @@ public class Paciente {
 		ArrayList<String[]> pacientes = new ArrayList<String[]>();
 		
 		try {
-			sql = "SELECT * FROM paciente WHERE cpf LIKE '%" + busca + "%' OR nome LIKE '%" + busca + "%' LIMIT 20";
+			sql = "SELECT * FROM paciente WHERE status = 1 AND (cpf LIKE '%" + busca + "%' OR nome LIKE '%" + busca + "%') LIMIT 20";
 			ps = banco.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
@@ -114,7 +114,7 @@ public class Paciente {
 		boolean conexao = false;
 		
 		try {
-			sql = "DELETE FROM paciente WHERE cpf = " + cpf;
+			sql = "UPDATE paciente SET status = 0 WHERE cpf = " + cpf;
 			ps = banco.prepareStatement(sql);
 			ps.executeUpdate();
 			ps.close();

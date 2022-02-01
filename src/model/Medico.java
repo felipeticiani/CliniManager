@@ -60,7 +60,7 @@ public class Medico {
 		ArrayList<String[]> medicos = new ArrayList<String[]>();
 		
 		try {
-			sql = "SELECT * FROM medico WHERE crm = '" + busca + "' OR nome LIKE '%" + busca + "%' OR especialidade LIKE '%" + busca + "%' LIMIT 20";
+			sql = "SELECT * FROM medico WHERE status = 1 AND (crm = '" + busca + "' OR nome LIKE '%" + busca + "%' OR especialidade LIKE '%" + busca + "%') LIMIT 20";
 			ps = banco.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
@@ -114,7 +114,7 @@ public class Medico {
 		boolean conexao = false;
 		
 		try {
-			sql = "DELETE FROM medico WHERE crm = " + crm;
+			sql = "UPDATE medico SET status = 0 WHERE crm = " + crm;
 			ps = banco.prepareStatement(sql);
 			ps.executeUpdate();
 			ps.close();
