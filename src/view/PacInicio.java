@@ -6,6 +6,7 @@ import java.awt.Point;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -23,6 +24,7 @@ import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 public class PacInicio extends JFrame {
 
@@ -65,14 +67,14 @@ public class PacInicio extends JFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame("CliniManager");
-		frame.setBounds(100, 100, 619, 424);
+		frame.setBounds(100, 100, 619, 460);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		
 		JLabel lblBuscarPaciente = new JLabel("Buscar Pacientes");
 		lblBuscarPaciente.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		lblBuscarPaciente.setBounds(25, 24, 137, 14);
+		lblBuscarPaciente.setBounds(25, 48, 137, 14);
 		frame.getContentPane().add(lblBuscarPaciente);
 		
 		JButton btnNovoPaciente = new JButton("Novo Paciente");
@@ -82,12 +84,12 @@ public class PacInicio extends JFrame {
 				PacCadastrar.main(null);
 			}
 		});
-		btnNovoPaciente.setBounds(451, 122, 121, 23);
+		btnNovoPaciente.setBounds(451, 146, 121, 23);
 		frame.getContentPane().add(btnNovoPaciente);
 		
 		textBuscar = new JTextField();
 		textBuscar.setToolTipText("");
-		textBuscar.setBounds(25, 85, 395, 20);
+		textBuscar.setBounds(25, 109, 395, 20);
 		frame.getContentPane().add(textBuscar);
 		textBuscar.setColumns(10);
 		
@@ -108,15 +110,15 @@ public class PacInicio extends JFrame {
 				}
 			}
 		});
-		btnBuscar.setBounds(451, 84, 121, 23);
+		btnBuscar.setBounds(451, 108, 121, 23);
 		frame.getContentPane().add(btnBuscar);
 		
 		JLabel lblBuscar = new JLabel("Pesquise por nome ou CPF.");
-		lblBuscar.setBounds(25, 65, 251, 14);
+		lblBuscar.setBounds(25, 89, 251, 14);
 		frame.getContentPane().add(lblBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(25, 122, 395, 252);
+		scrollPane.setBounds(25, 146, 395, 252);
 		frame.getContentPane().add(scrollPane);
 		tblPacientes.addMouseListener(new MouseAdapter() {
 		    public void mousePressed(MouseEvent clique) {
@@ -143,5 +145,48 @@ public class PacInicio extends JFrame {
 		tblPacientes.getColumnModel().getColumn(1).setMaxWidth(150);
 		tblPacientes.setDefaultEditor(Object.class, null);
 		tblPacientes.setRowHeight(25);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 603, 22);
+		frame.getContentPane().add(menuBar);
+		
+		JMenu mnConsultas = new JMenu("Consultas");
+		menuBar.add(mnConsultas);
+		
+		JMenu mnPacientes = new JMenu("Pacientes");
+		menuBar.add(mnPacientes);
+		
+		JMenuItem mntmPacBuscar = new JMenuItem("Buscar");
+		mnPacientes.add(mntmPacBuscar);
+		
+		JMenuItem mntmPacCadastrar = new JMenuItem("Novo paciente");
+		mntmPacCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				PacCadastrar.main(null);
+			}
+		});
+		mnPacientes.add(mntmPacCadastrar);
+		
+		JMenu mnMédicos = new JMenu("Médicos");
+		menuBar.add(mnMédicos);
+		
+		JMenuItem mntmMedBuscar = new JMenuItem("Buscar");
+		mntmMedBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				MedInicio.main(null);
+			}
+		});
+		mnMédicos.add(mntmMedBuscar);
+		
+		JMenuItem mntmMedCadastrar = new JMenuItem("Novo médico");
+		mntmMedCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				MedCadastrar.main(null);
+			}
+		});
+		mnMédicos.add(mntmMedCadastrar);
 	}
 }

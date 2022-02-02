@@ -21,6 +21,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class MedInicio extends JFrame {
 
@@ -63,14 +66,14 @@ public class MedInicio extends JFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame("CliniManager");
-		frame.setBounds(100, 100, 619, 424);
+		frame.setBounds(100, 100, 619, 460);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		
 		JLabel lblBuscarMedico = new JLabel("Buscar Médicos");
 		lblBuscarMedico.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		lblBuscarMedico.setBounds(25, 24, 137, 14);
+		lblBuscarMedico.setBounds(25, 48, 137, 14);
 		frame.getContentPane().add(lblBuscarMedico);
 		
 		JButton btnNewButton = new JButton("Novo Médico");
@@ -80,12 +83,12 @@ public class MedInicio extends JFrame {
 				MedCadastrar.main(null);
 			}
 		});
-		btnNewButton.setBounds(451, 122, 121, 23);
+		btnNewButton.setBounds(451, 146, 121, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		textBuscar = new JTextField();
 		textBuscar.setToolTipText("");
-		textBuscar.setBounds(25, 85, 395, 20);
+		textBuscar.setBounds(25, 109, 395, 20);
 		frame.getContentPane().add(textBuscar);
 		textBuscar.setColumns(10);
 		
@@ -106,15 +109,15 @@ public class MedInicio extends JFrame {
 				}
 			}
 		});
-		btnBuscar.setBounds(451, 84, 121, 23);
+		btnBuscar.setBounds(451, 108, 121, 23);
 		frame.getContentPane().add(btnBuscar);
 		
 		JLabel lblBuscar = new JLabel("Pesquise por nome, CRM ou especialidade.");
-		lblBuscar.setBounds(25, 65, 251, 14);
+		lblBuscar.setBounds(25, 89, 251, 14);
 		frame.getContentPane().add(lblBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(25, 122, 395, 252);
+		scrollPane.setBounds(25, 146, 395, 252);
 		frame.getContentPane().add(scrollPane);
 		tblMedicos.addMouseListener(new MouseAdapter() {
 		    public void mousePressed(MouseEvent clique) {
@@ -141,5 +144,48 @@ public class MedInicio extends JFrame {
 		tblMedicos.getColumnModel().getColumn(1).setMaxWidth(150);
 		tblMedicos.setDefaultEditor(Object.class, null);
 		tblMedicos.setRowHeight(25);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 603, 22);
+		frame.getContentPane().add(menuBar);
+		
+		JMenu mnConsultas = new JMenu("Consultas");
+		menuBar.add(mnConsultas);
+		
+		JMenu mnPacientes = new JMenu("Pacientes");
+		menuBar.add(mnPacientes);
+		
+		JMenuItem mntmPacBuscar = new JMenuItem("Buscar");
+		mntmPacBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				PacInicio.main(null);
+			}
+		});
+		mnPacientes.add(mntmPacBuscar);
+		
+		JMenuItem mntmPacCadastrar = new JMenuItem("Novo paciente");
+		mntmPacCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				PacCadastrar.main(null);
+			}
+		});
+		mnPacientes.add(mntmPacCadastrar);
+		
+		JMenu mnMédicos = new JMenu("Médicos");
+		menuBar.add(mnMédicos);
+		
+		JMenuItem mntmMedBuscar = new JMenuItem("Buscar");
+		mnMédicos.add(mntmMedBuscar);
+		
+		JMenuItem mntmMedCadastrar = new JMenuItem("Novo médico");
+		mntmMedCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				MedCadastrar.main(null);
+			}
+		});
+		mnMédicos.add(mntmMedCadastrar);
 	}
 }
