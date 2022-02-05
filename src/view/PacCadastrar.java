@@ -127,10 +127,7 @@ public class PacCadastrar {
 				String paciente[] = new String[6];
 				paciente[0] = textNome.getText();
 				paciente[1] = textCpf.getText();
-				String[] dt = textNascimento.getText().split("/");
-				StringBuffer data = new StringBuffer(dt[2]);
-				data.append("-" + dt[1] + "-" + dt[0]);
-				paciente[2] = data.toString();
+				paciente[2] = textNascimento.getText();
 				if (!textEmail.getText().isBlank())
 					paciente[3] = textEmail.getText();
 				if (!textEndereco.getText().isBlank()) {

@@ -31,10 +31,7 @@ public class PacVisualizar {
 	public void preencheDados(String[] paciente) {
 		textCpf.setText(paciente[0]);
 		textNome.setText(paciente[1]);
-		String[] dt = paciente[2].split("-");
-		StringBuffer data = new StringBuffer(dt[2]);
-		data.append("/" + dt[1] + "/" + dt[0]);
-		textNascimento.setText(data.toString());
+		textNascimento.setText(paciente[2]);
 		textEmail.setText(paciente[3]);
 		textEndereco.setText(paciente[4]);
 		textTelefone.setText(paciente[5]);

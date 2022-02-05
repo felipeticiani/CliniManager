@@ -33,7 +33,7 @@ public class Paciente {
 		boolean conexao = false;
 		
 		try {
-			sql = "INSERT INTO paciente (nome, cpf, data_nascimento, email, endereco, telefone) VALUES (?, ?, ?, ?, ?, ?)";
+			sql = "INSERT INTO paciente (nome, cpf, data_nascimento, email, endereco, telefone) VALUES (?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?, ?)";
 			ps = banco.prepareStatement(sql);
 			ps.setString(1, nome);
 			ps.setString(2, cpf);
@@ -60,7 +60,7 @@ public class Paciente {
 		ArrayList<String[]> pacientes = new ArrayList<String[]>();
 		
 		try {
-			sql = "SELECT * FROM paciente WHERE status = 1 AND (cpf LIKE '%" + busca + "%' OR nome LIKE '%" + busca + "%') LIMIT 20";
+			sql = "SELECT nome, cpf, DATE_FORMAT(data_nascimento, '%d/%m/%Y') as data_nascimento, email, endereco, telefone, status FROM paciente WHERE status = 1 AND (cpf LIKE '%" + busca + "%' OR nome LIKE '%" + busca + "%') LIMIT 20";
 			ps = banco.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
@@ -89,7 +89,7 @@ public class Paciente {
 		boolean conexao = false;
 		
 		try {
-			sql = "UPDATE paciente SET nome = ?, cpf = ?, data_nascimento = ?, email = ?, endereco = ?, telefone = ? WHERE cpf = " + paciente[6];
+			sql = "UPDATE paciente SET nome = ?, cpf = ?, data_nascimento = STR_TO_DATE(?, '%d/%m/%Y'), email = ?, endereco = ?, telefone = ? WHERE cpf = " + paciente[6];
 			ps = banco.prepareStatement(sql);
 			ps.setString(1, paciente[0]);
 			ps.setString(2, paciente[1]);
