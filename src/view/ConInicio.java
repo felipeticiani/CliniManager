@@ -17,7 +17,6 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
 import controller.ConsultaController;
-import controller.MedicoController;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -26,10 +25,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import javax.swing.SwingConstants;
 
 public class ConInicio extends JFrame {
 
@@ -44,6 +39,8 @@ public class ConInicio extends JFrame {
 	JButton btnFiltrar = new JButton("Filtrar");
 	JButton btnBuscar = new JButton("Nova consulta");
 	
+	JLabel lblFiltroAtual = new JLabel("");
+	
 	String[] filtros = new String[]{"", ""};
 	
 	public void preencheDados() {
@@ -54,6 +51,11 @@ public class ConInicio extends JFrame {
 			String[] cons = consultas.get(i);
 			Object[] celula = {cons[0], cons[1], cons[3], cons[2]};
 			model.addRow(celula);
+		}
+		if (filtros[0].isBlank() || filtros[1].isBlank()) {
+			lblFiltroAtual.setText("Hoje");
+		} else {
+			lblFiltroAtual.setText("De " + filtros[0] + " até " + filtros[1]);
 		}
 	}
 
@@ -104,7 +106,8 @@ public class ConInicio extends JFrame {
 		// Botão Nova Consulta
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				frame.dispose();
+				ConCadastrar.main(null);
 			}
 		});
 		btnBuscar.setBounds(451, 108, 121, 23);
@@ -156,6 +159,12 @@ public class ConInicio extends JFrame {
 		mnConsultas.add(mntmConInicio);
 		
 		JMenuItem mntmConCadastrar = new JMenuItem("Nova consulta");
+		mntmConCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				ConCadastrar.main(null);
+			}
+		});
 		mnConsultas.add(mntmConCadastrar);
 		
 		JMenu mnPacientes = new JMenu("Pacientes");
@@ -248,5 +257,9 @@ public class ConInicio extends JFrame {
 		});
 		btnHoje.setBounds(451, 229, 61, 23);
 		frame.getContentPane().add(btnHoje);
+		
+		// Texto filtro atual
+		lblFiltroAtual.setBounds(25, 73, 189, 14);
+		frame.getContentPane().add(lblFiltroAtual);
 	}
 }

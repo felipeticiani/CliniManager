@@ -28,14 +28,12 @@ public class Consulta {
 		boolean conexao = false;
 		
 		try {
-			sql = "INSERT INTO paciente (nome, cpf, data_nascimento, email, endereco, telefone) VALUES (?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?, ?)";
+			sql = "INSERT INTO consulta (data, horario, fk_medico, fk_paciente) VALUES (STR_TO_DATE(?, '%d/%m/%Y'), ?, ?, ?)";
 			ps = banco.prepareStatement(sql);
-			ps.setString(1, nome);
-			ps.setString(2, cpf);
-			ps.setString(3, dataNascimento);
-			ps.setString(4, email);
-			ps.setString(5, endereco);
-			ps.setString(6, telefone);
+			ps.setString(1, data);
+			ps.setString(2, horario);
+			ps.setString(3, fk_medico);
+			ps.setString(4, fk_paciente);
 			ps.executeUpdate();
 			ps.close();
 			banco.close();
@@ -90,49 +88,49 @@ public class Consulta {
 		return consultas;
 	}
 	
-	public static boolean editar(String[] paciente) {
-		Connection banco = abreBanco();
-		PreparedStatement ps;
-		String sql;
-		boolean conexao = false;
-		
-		try {
-			sql = "UPDATE paciente SET nome = ?, cpf = ?, data_nascimento = STR_TO_DATE(?, '%d/%m/%Y'), email = ?, endereco = ?, telefone = ? WHERE cpf = " + paciente[6];
-			ps = banco.prepareStatement(sql);
-			ps.setString(1, paciente[0]);
-			ps.setString(2, paciente[1]);
-			ps.setString(3, paciente[2]);
-			ps.setString(4, paciente[3]);
-			ps.setString(5, paciente[4]);
-			ps.setString(6, paciente[5]);
-			ps.executeUpdate();
-			ps.close();
-			banco.close();
-			conexao = true;
-		} catch(SQLException e) {
-			throw new RuntimeException(e);
-		}
-		return conexao;
-	}
-	
-	public static boolean excluir(String cpf) {
-		Connection banco = abreBanco();
-		PreparedStatement ps;
-		String sql;
-		boolean conexao = false;
-		
-		try {
-			sql = "UPDATE paciente SET status = 0 WHERE cpf = " + cpf;
-			ps = banco.prepareStatement(sql);
-			ps.executeUpdate();
-			ps.close();
-			banco.close();
-			conexao = true;
-		} catch(SQLException e) {
-			throw new RuntimeException(e);
-		}
-		return conexao;
-	}
+//	public static boolean editar(String[] paciente) {
+//		Connection banco = abreBanco();
+//		PreparedStatement ps;
+//		String sql;
+//		boolean conexao = false;
+//		
+//		try {
+//			sql = "UPDATE paciente SET nome = ?, cpf = ?, data_nascimento = STR_TO_DATE(?, '%d/%m/%Y'), email = ?, endereco = ?, telefone = ? WHERE cpf = " + paciente[6];
+//			ps = banco.prepareStatement(sql);
+//			ps.setString(1, paciente[0]);
+//			ps.setString(2, paciente[1]);
+//			ps.setString(3, paciente[2]);
+//			ps.setString(4, paciente[3]);
+//			ps.setString(5, paciente[4]);
+//			ps.setString(6, paciente[5]);
+//			ps.executeUpdate();
+//			ps.close();
+//			banco.close();
+//			conexao = true;
+//		} catch(SQLException e) {
+//			throw new RuntimeException(e);
+//		}
+//		return conexao;
+//	}
+//	
+//	public static boolean excluir(String cpf) {
+//		Connection banco = abreBanco();
+//		PreparedStatement ps;
+//		String sql;
+//		boolean conexao = false;
+//		
+//		try {
+//			sql = "UPDATE paciente SET status = 0 WHERE cpf = " + cpf;
+//			ps = banco.prepareStatement(sql);
+//			ps.executeUpdate();
+//			ps.close();
+//			banco.close();
+//			conexao = true;
+//		} catch(SQLException e) {
+//			throw new RuntimeException(e);
+//		}
+//		return conexao;
+//	}
 	
 	public static Connection abreBanco() {
 		final String BANCO = "jdbc:mysql://localhost:3306/bd_clinimanager";

@@ -82,6 +82,30 @@ public class Medico {
 		return medicos;
 	}
 	
+	public static ArrayList<String> consultarEspecialidades() {
+		Connection banco = abreBanco();
+		PreparedStatement ps;
+		ResultSet rs = null;
+		String sql;
+		
+		ArrayList<String> especialidades = new ArrayList<String>();
+		
+		try {
+			sql = "SELECT especialidade FROM medico WHERE status = 1 GROUP BY especialidade";
+			ps = banco.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				especialidades.add(rs.getString("especialidade"));
+			}
+			ps.close();
+			banco.close();
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return especialidades;
+	}
+	
 	public static boolean editar(String[] medico) {
 		Connection banco = abreBanco();
 		PreparedStatement ps;

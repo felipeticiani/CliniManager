@@ -6,10 +6,10 @@ import model.Consulta;
 
 public class ConsultaController {
 	
-	public static boolean incluir(String[] paciente) {
-		Paciente pac = new Paciente(paciente);
+	public static boolean incluir(String[] consulta) {
+		Consulta cons = new Consulta(consulta);
 		
-		if (pac.incluir()) {
+		if (cons.incluir()) {
 			return true;
 		} else {
 			return false;
@@ -22,19 +22,19 @@ public class ConsultaController {
 		return consultas;
 	}
 	
-	public static boolean editar(String[] paciente) {
-		if (Paciente.editar(paciente)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	public static boolean excluir(String cpf) {
-		if (Paciente.excluir(cpf)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+//	public static boolean editar(String[] paciente) {
+//		if (Paciente.editar(paciente)) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
+//	
+//	public static boolean excluir(String cpf) {
+//		if (Paciente.excluir(cpf)) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
 }

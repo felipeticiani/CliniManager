@@ -22,6 +22,12 @@ public class MedicoController {
 		return medicos;
 	}
 	
+	public static ArrayList<String> consultarEspecialidades() {
+		ArrayList<String> especialidades = new ArrayList<String>();
+		especialidades = Medico.consultarEspecialidades();
+		return especialidades;
+	}
+	
 	public static boolean editar(String[] medico) {
 		if (Medico.editar(medico)) {
 			return true;

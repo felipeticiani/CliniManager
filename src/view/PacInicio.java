@@ -163,6 +163,12 @@ public class PacInicio extends JFrame {
 		mnConsultas.add(mntmConInicio);
 		
 		JMenuItem mntmConCadastrar = new JMenuItem("Nova consulta");
+		mntmConCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				ConCadastrar.main(null);
+			}
+		});
 		mnConsultas.add(mntmConCadastrar);
 		
 		JMenu mnPacientes = new JMenu("Pacientes");
